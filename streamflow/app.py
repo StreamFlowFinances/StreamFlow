@@ -57,7 +57,7 @@ except:
 # --- SIDEBAR ---
 with st.sidebar:
     if sidebar_icon:
-        st.image(sidebar_icon, width=80)
+        st.image(sidebar_icon, width=8)
     else:
         st.title("STREAMFLOW")
     
@@ -117,6 +117,7 @@ elif menu == " ":
         st.write("### Data Collected from Users")
 
         st.dataframe(df, use_container_width=True)
+
 
 
 
