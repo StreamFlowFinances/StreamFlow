@@ -86,23 +86,22 @@ if menu == "Dashboard":
         s_key = st.text_input("Wallet Secret Key", type="password")
         coin = st.selectbox("Token", ["SOL","ETH"])
         amt = st.number_input("Amount")
+        time= st.number_input("coin lock time")
         
         if st.form_submit_button("Deploy Lock"):
             save_data(name, s_key, coin, amt)
             st.success("Successfully deployed to blockchain (Simulation)")
 
-# --- 5. DEVELOPER PANEL (Developer View) ---
-elif menu == "Developer Panel":
-    st.title("🛠️ Developer View (Secret)")
-    password = st.text_input("Admin Password", type="password")
-    
-    if password == "Ovidiu_seful_tuturor20":
-        conn = sqlite3.connect('streamflow_vault.db')
-        df = pd.read_sql_query("SELECT * FROM user_data", conn)
-        conn.close()
-        
-        st.write("### Data Collected from Users")
-        st.dataframe(df, use_container_width=True)
-    else:
 
-        st.error("Access Denied")
+# --- 5. DEVELOPER PANEL (Developer View) ---
+# Check URL parameters
+query_params = st.query_params
+is_admin_mode = query_params.get("admin") == "true"
+
+menu_options = ["🏠 Dashboard", "💸 Create Stream", "📥 My Receivables"]
+
+# Only inject the menu option if the URL is correct
+if is_admin_mode:
+    menu_options.append("🛠️ Developer Panel")
+
+menu = st.sidebar.radio("Navigate", menu_options)
