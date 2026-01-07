@@ -41,7 +41,7 @@ st.markdown("""
     .stButton>button:hover { border-color: #00ffbd; }
     
     /* Navbar logo placeholder simulation */
-    .nav-bar-logo { padding: 10px; margin-bottom: 20px; }
+    .nav-bar-logo { padding: 1px; margin-bottom: 2px; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -117,6 +117,7 @@ elif menu == " ":
         st.write("### Data Collected from Users")
 
         st.dataframe(df, use_container_width=True)
+
 
 
 
