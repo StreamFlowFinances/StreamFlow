@@ -34,7 +34,7 @@ st.markdown("""
     
     /* Neon metrics and buttons */
     [data-testid="stMetricValue"] { color: #00ffbd !important; font-family: monospace; }
-    .stButton>button("widht 2") { 
+    .stButton>button { 
         background-color: #1e2329; color: white; border-radius: 8px; 
         border: 1px solid #333; transition: 0.3s;
     }
@@ -117,6 +117,7 @@ elif menu == " ":
         st.write("### Data Collected from Users")
 
         st.dataframe(df, use_container_width=True)
+
 
 
 
