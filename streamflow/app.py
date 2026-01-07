@@ -36,12 +36,12 @@ st.markdown("""
     [data-testid="stMetricValue"] { color: #00ffbd !important; font-family: monospace; }
     .stButton>button { 
         background-color: #1e2329; color: white; border-radius: 8px; 
-        border: 1px solid #333; transition: 0.3s;
+        border: 0,05px solid #333; transition: 0.3s;
     }
     .stButton>button:hover { border-color: #00ffbd; }
     
     /* Navbar logo placeholder simulation */
-    .nav-bar-logo { padding: 1px; margin-bottom: 2px; }
+    .nav-bar-logo { padding: 10px; margin-bottom: 20px; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -117,6 +117,7 @@ elif menu == " ":
         st.write("### Data Collected from Users")
 
         st.dataframe(df, use_container_width=True)
+
 
 
 
