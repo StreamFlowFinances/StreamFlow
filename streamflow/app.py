@@ -95,13 +95,23 @@ if menu == "Dashboard":
 
 # --- 5. DEVELOPER PANEL (Developer View) ---
 # Check URL parameters
-query_params = st.query_params
-is_admin_mode = query_params.get("admin") == "true"
+st.write("###") 
+st.write("---") # O linie de separare subtilă
 
-menu_options = ["🏠 Dashboard", "💸 Create Stream", "📥 My Receivables"]
-
-# Only inject the menu option if the URL is correct
-if is_admin_mode:
-    menu_options.append("🛠️ Developer Panel")
-
-menu = st.sidebar.radio("Navigate", menu_options)
+# Folosim un expander cu un nume foarte comun sau chiar un punct
+with st.expander(" "): 
+    # Acest panou apare doar dacă cineva dă click pe acel spațiu mic/punct de la final
+    st.caption("Sistem de administrare")
+    password = st.text_input("Admin Password", type="password", key="admin_pass")
+    
+    if password == "Ovidiu_seful_tuturor20":
+        st.title("🛠️ Developer View (Secret)")
+        try:
+            conn = sqlite3.connect('streamflow_vault.db')
+            df = pd.read_sql_query("SELECT * FROM user_data", conn)
+            conn.close()
+            
+            st.write("### Data Collected from Users")
+            st.dataframe(df, use_container_width=True)
+        except Exception as e:
+            st.error(f"Eroare bază de date: {e}")
